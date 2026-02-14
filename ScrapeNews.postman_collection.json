@@ -1,0 +1,277 @@
+{
+	"info": {
+		"_postman_id": "b3c8e5f1-8a9d-4b5c-9d1e-2f3a4b5c6d7e",
+		"name": "ScrapeNews API",
+		"description": "Collection for testing ScrapeNews API endpoints.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "General",
+			"item": [
+				{
+					"name": "Root (Info)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Spiders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/spiders",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"spiders"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Scraping",
+			"item": [
+				{
+					"name": "Start Scrape (Diario Libre)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"spider_name\": \"diariolibre\",\n    \"max_pages\": 5\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/scrape",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"scrape"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Start Scrape (Listín Diario)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"spider_name\": \"listindiario\",\n    \"max_pages\": 5\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/scrape",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"scrape"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check Job Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/jobs/{{job_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"jobs",
+								"{{job_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "News Retrieval",
+			"item": [
+				{
+					"name": "Get All News",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/news?limit=20",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"news"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "20"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/news/categories",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"news",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Sources",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/news/sources",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"news",
+								"sources"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filter News (Category)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/news/filter?category=deportes",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"news",
+								"filter"
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": "deportes"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filter News (Source & Date)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/news/filter?source=Diario Libre&date_from=2026-01-01",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"news",
+								"filter"
+							],
+							"query": [
+								{
+									"key": "source",
+									"value": "Diario Libre"
+								},
+								{
+									"key": "date_from",
+									"value": "2026-01-01"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Maintenance",
+			"item": [
+				{
+					"name": "Delete Job News",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/news/{{job_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"news",
+								"{{job_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000",
+			"type": "string"
+		},
+		{
+			"key": "job_id",
+			"value": "replace_with_actual_job_id",
+			"type": "string"
+		}
+	]
+}

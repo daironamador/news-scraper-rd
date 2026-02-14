@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv
+build/
+dist/
+*.egg-info/
+.coverage
+htmlcov/
+.pytest_cache/
+*.spec
+
+# Scrapy
+.scrapy/
+crawls/
+*.log
+
+# Data
+data/*.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment
+.env
+.env.local
+
+# OS
+.DS_Store
+Thumbs.db
